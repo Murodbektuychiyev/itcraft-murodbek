@@ -1,0 +1,932 @@
+/* CSS o'zgaruvchilari */
+:root {
+    --body-color: #1f242d;
+    --first-color: #dbdbdb;
+    --first-color-alt: #d8dabc;
+    --second-color: #02ab39;
+    --second-color-alt: #26da60;
+    --scroll-bar-bg: #098331;
+    --card-bg: #262933;
+    --text-color: #fff;
+    --text-color-light: #ccc;
+    --border-color: #555;
+    --hover-color: #4CAF50;
+    --dark-bg: #2D323E;
+    
+    /* Ijtimoiy tarmoq ranglari */
+    --instagram-color: #E4405F;
+    --linkedin-color: #0077B5;
+    --telegram-color: #0088CC;
+    --github-color: #333;
+    --youtube-color: #FF0000;
+}
+
+/* Universal box-sizing qoidasi */
+* {
+    box-sizing: border-box;
+}
+
+/* Asosiy va umumiy uslublar */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Header uchun padding qo'shildi */
+body {
+    padding-top: 80px; /* Header balandligiga mos padding */
+}
+
+.main-content {
+    background-color: var(--dark-bg);
+}
+
+/* Rang animatsiyalari */
+@keyframes color-slide {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 0%; }
+}
+
+@keyframes night-theme-change {
+    0% { 
+        background-color: #1f242d;
+        color: #fff;
+    }
+    25% { 
+        background-color: #2D323E;
+        color: #dbdbdb;
+    }
+    50% { 
+        background-color: #383e4a; 
+        color: #fff;
+    }
+    75% { 
+        background-color: #1a1e25; 
+        color: #d8dabc;
+    }
+    100% { 
+        background-color: #1f242d;
+        color: #fff;
+    }
+}
+
+/* Rasm harakati animatsiyasi */
+@keyframes image-move-1 {
+    0% { transform: translateY(0) translateX(0) scale(1.0); }
+    50% { transform: translateY(-10px) translateX(10px) scale(1.02); }
+    100% { transform: translateY(0) translateX(0) scale(1.0); }
+}
+
+@keyframes image-move-2 {
+    0% { transform: translateY(0) translateX(0) scale(1.0); }
+    50% { transform: translateY(10px) translateX(-10px) scale(1.02); }
+    100% { transform: translateY(0) translateX(0) scale(1.0); }
+}
+
+@keyframes image-move-3 {
+    0% { transform: translateY(0) translateX(0) scale(1.0); }
+    50% { transform: translateY(5px) translateX(-15px) scale(1.01); }
+    100% { transform: translateY(0) translateX(0) scale(1.0); }
+}
+
+/* Navigatsiya menyusi */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: var(--body-color);
+    transition: background-color 0.5s ease-in-out;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar.scrolled {
+    background-color: var(--second-color);
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--first-color);
+    transition: color 0.5s ease-in-out;
+}
+
+.navbar.scrolled .logo {
+    color: var(--text-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--first-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.navbar.scrolled .nav-links a {
+    color: var(--text-color);
+}
+
+.nav-links a:hover {
+    color: var(--second-color);
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 80px);
+    padding: 0 50px;
+    background-image: linear-gradient(to right, #00704B, #004F34, #02ab39, #00704B, #4CAF50);
+    background-size: 200% 100%;
+    animation: color-slide 8s ease-in-out infinite;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+/* Yangi animatsiyalar uchun uslublar */
+.name-container {
+    display: inline-block;
+    overflow: hidden;
+    height: 1.2em;
+    white-space: nowrap;
+}
+
+.name-container .char {
+    display: inline-block;
+    transform: translateY(-100%);
+    opacity: 0;
+    animation: drop-in 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+@keyframes drop-in {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.typewriter::after {
+    content: '|';
+    animation: blink-caret 1s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white; }
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.hero-content h2 {
+    font-size: 24px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+/* Faqat fon uchun uslub, ranglar har biriga alohida beriladi */
+.social-links a i {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.social-links a i:hover {
+    background-color: transparent;
+    transform: scale(1.1);
+}
+
+/* Har bir ikonka uchun standart ranglarni belgilash */
+.social-links a .fa-instagram { color: var(--instagram-color); }
+.social-links a .fa-linkedin-in { color: var(--linkedin-color); }
+.social-links a .fa-telegram-plane { color: var(--telegram-color); }
+.social-links a .fa-github { color: var(--github-color); }
+.social-links a .fa-youtube { color: var(--youtube-color); }
+
+.contact-btn {
+    display: inline-block;
+    background-color: #02ab39;
+    color: #fff;
+    padding: 15px 40px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 30px;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.3s;
+    background-image: linear-gradient(to right, #02ab39, #00704B, #26da60);
+    background-size: 200% 100%;
+    animation: color-slide 8s ease-in-out infinite;
+}
+
+.contact-btn:hover {
+    background-color: #26da60;
+    transform: translateY(-5px);
+    animation-play-state: paused;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    margin: 0 auto;
+    max-width: 100%;
+    display: block;
+}
+
+.hero-image img {
+    width: 672px;
+    height: 668px;
+    object-fit: cover;
+    clip-path: polygon(50% 0%, 90% 25%, 90% 75%, 50% 100%, 10% 75%, 10% 25%);
+    border: 5px solid #fff;
+    transition: transform 0.5s;
+    display: block;
+    margin: 0 auto;
+    animation: image-move-1 4s ease-in-out infinite;
+}
+
+.hero-image img:hover {
+    animation-play-state: paused;
+    transform: scale(1.05);
+}
+
+/* Umumiy bo'lim uslublari */
+.section-subtitle {
+    font-size: 14px;
+    font-weight: 600;
+    color: #02ab39;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.section-title {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* About Us bo'limi */
+.about-us-section {
+    padding: 80px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    animation: night-theme-change 8s ease-in-out infinite;
+}
+
+.about-us-image {
+    flex: 1;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 100%;
+    display: block;
+}
+
+.about-us-image img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.5s;
+    display: block;
+    margin: 0 auto;
+    animation: image-move-2 4s ease-in-out infinite;
+}
+
+.about-us-image img:hover {
+    animation-play-state: paused;
+    transform: scale(1.05) rotate(5deg);
+}
+
+.about-us-content {
+    flex: 1;
+    padding-left: 80px;
+    color: #fff;
+}
+
+.about-us-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #dbdbdb;
+    margin-bottom: 20px;
+}
+
+.call-to-action {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 30px;
+    color: #fff;
+    border-left: 3px solid #02ab39;
+    padding-left: 15px;
+    transition: color 0.3s, border-left-color 0.3s;
+}
+
+.call-to-action:hover {
+    color: #02ab39;
+    border-left-color: #fff;
+}
+
+/* Services bo'limi */
+.services-section {
+    padding: 80px 100px;
+    text-align: center;
+    animation: night-theme-change 8s ease-in-out infinite;
+}
+
+.services-header {
+    margin-bottom: 50px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background-color: #262933;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-icon {
+    font-size: 32px;
+    color: #02ab39;
+    margin-bottom: 20px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.service-card:hover .service-icon {
+    color: #fff;
+    transform: scale(1.2);
+}
+
+.service-card h4 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.service-card p {
+    font-size: 14px;
+    color: #dbdbdb;
+    line-height: 1.6;
+}
+
+/* Commitments bo'limi */
+.commitments-section {
+    padding: 80px 100px;
+    background-color: #2D323E;
+    text-align: center;
+    animation: night-theme-change 8s ease-in-out infinite;
+}
+
+.commitments-header {
+    margin-bottom: 50px;
+}
+
+.commitments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.commitment-card {
+    background-color: #262933;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.commitment-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.commitment-card i {
+    font-size: 48px;
+    color: #02ab39;
+    margin-bottom: 20px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.commitment-card:hover i {
+    color: #fff;
+    transform: scale(1.1) rotate(5deg);
+}
+
+.commitment-card h4 {
+    font-size: 20px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.commitment-card p {
+    font-size: 14px;
+    color: #dbdbdb;
+    line-height: 1.6;
+}
+
+/* Portfolio bo'limi */
+.portfolio-section {
+    padding: 80px 100px;
+    text-align: center;
+    animation: night-theme-change 8s ease-in-out infinite;
+}
+
+.portfolio-header {
+    margin-bottom: 50px;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.portfolio-item:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05);
+}
+
+.portfolio-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+
+.portfolio-item:hover .portfolio-caption {
+    transform: translateY(0);
+}
+
+.portfolio-caption h4 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.portfolio-caption a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.portfolio-caption a:hover {
+    color: #02ab39;
+}
+
+/* Contact bo'limi */
+.contact-section {
+    padding: 80px 100px;
+    text-align: center;
+    animation: night-theme-change 8s ease-in-out infinite;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 80px;
+    margin-top: 50px;
+}
+
+.contact-info {
+    flex: 1;
+    text-align: left;
+    max-width: 400px;
+}
+
+.contact-image {
+    max-width: 300px;
+    margin-right: 20px;
+}
+
+.contact-image img {
+    width: 100%;
+    height: auto;
+    animation: image-move-3 6s ease-in-out infinite;
+    transition: transform 0.5s;
+}
+
+.contact-image:hover {
+    animation-play-state: paused;
+    transform: scale(1.05);
+}
+
+.contact-info .contact-details {
+    margin: 20px 0;
+}
+
+/* Alohida ijtimoiy tarmoq ranglari */
+.contact-info .social-links a .fa-instagram { color: var(--instagram-color); }
+.contact-info .social-links a .fa-linkedin-in { color: var(--linkedin-color); }
+.contact-info .social-links a .fa-telegram-plane { color: var(--telegram-color); }
+.contact-info .social-links a .fa-github { color: var(--github-color); }
+.contact-info .social-links a .fa-youtube { color: var(--youtube-color); }
+
+.contact-info .social-links a i {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.3s;
+    color: var(--first-color);
+}
+
+.contact-info .social-links a i:hover {
+    background-color: transparent;
+    transform: scale(1.1) rotate(10deg);
+}
+
+.contact-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #555;
+    padding: 15px 0;
+    margin-bottom: 25px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: border-bottom-color 0.3s, transform 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-bottom-color: #02ab39;
+    transform: translateX(5px);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #dbdbdb;
+}
+
+.contact-form button {
+    background-color: #02ab39;
+    color: #fff;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.3s;
+    background-image: linear-gradient(to right, #02ab39, #00704B, #26da60);
+    background-size: 200% 100%;
+    animation: color-slide 8s ease-in-out infinite;
+}
+
+.contact-form button:hover {
+    background-color: #26da60;
+    transform: translateY(-5px);
+    animation-play-state: paused;
+}
+
+/* Footer */
+footer {
+    background-color: #1f242d;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    animation: night-theme-change 8s ease-in-out infinite;
+}
+
+/* Yuqoriga o'tish tugmasi */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #02ab39;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 100;
+}
+
+.scroll-top:hover {
+    transform: translateY(-5px);
+}
+
+/* Animatsiyalar */
+.animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Har bir bo'lim uchun animatsiya kechikishini belgilash */
+.hero-content .animate:nth-child(2) { transition-delay: 0.1s; }
+.hero-content .animate:nth-child(3) { transition-delay: 0.2s; }
+.hero-content .animate:nth-child(4) { transition-delay: 0.3s; }
+.hero-content .animate:nth-child(5) { transition-delay: 0.4s; }
+.hero-image.animate { transition-delay: 0.5s; }
+
+.about-us-image.animate { transition-delay: 0.1s; }
+.about-us-content .animate:nth-child(1) { transition-delay: 0.2s; }
+.about-us-content .animate:nth-child(2) { transition-delay: 0.3s; }
+.about-us-content .animate:nth-child(3) { transition-delay: 0.4s; }
+
+.services-header .animate:nth-child(1) { transition-delay: 0.1s; }
+.services-header .animate:nth-child(2) { transition-delay: 0.2s; }
+.services-grid .animate:nth-child(1) { transition-delay: 0.3s; }
+.services-grid .animate:nth-child(2) { transition-delay: 0.5s; }
+.services-grid .animate:nth-child(3) { transition-delay: 0.7s; }
+.services-grid .animate:nth-child(4) { transition-delay: 0.9s; }
+
+.commitments-header .animate:nth-child(1) { transition-delay: 0.1s; }
+.commitments-header .animate:nth-child(2) { transition-delay: 0.2s; }
+.commitments-grid .animate:nth-child(1) { transition-delay: 0.3s; }
+.commitments-grid .animate:nth-child(2) { transition-delay: 0.5s; }
+.commitments-grid .animate:nth-child(3) { transition-delay: 0.7s; }
+.commitments-grid .animate:nth-child(4) { transition-delay: 0.9s; }
+
+.portfolio-header .animate:nth-child(1) { transition-delay: 0.1s; }
+.portfolio-header .animate:nth-child(2) { transition-delay: 0.2s; }
+.portfolio-grid .animate:nth-child(1) { transition-delay: 0.3s; }
+.portfolio-grid .animate:nth-child(2) { transition-delay: 0.5s; }
+.portfolio-grid .animate:nth-child(3) { transition-delay: 0.7s; }
+.portfolio-grid .animate:nth-child(4) { transition-delay: 0.9s; }
+
+.contact-header .animate:nth-child(1) { transition-delay: 0.1s; }
+.contact-header .animate:nth-child(2) { transition-delay: 0.2s; }
+.contact-container .animate:nth-child(1) { transition-delay: 0.3s; }
+.contact-container .animate:nth-child(2) { transition-delay: 0.5s; }
+
+/* ========================================================== */
+/* Media Queries (Responsive)               */
+/* ========================================================== */
+
+/* Kichik ekranlar (telefonlar uchun, 768px dan kichik) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .nav-links {
+        margin-top: 15px;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-section {
+        flex-direction: column-reverse;
+        text-align: center;
+        height: auto;
+        padding: 50px 20px;
+    }
+
+    .hero-content, .hero-image {
+        flex: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-content {
+        margin-top: 40px;
+    }
+
+    .hero-content h1 {
+        font-size: 36px;
+    }
+
+    .hero-content h2 {
+        font-size: 20px;
+    }
+
+    .hero-image img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .about-us-section,
+    .contact-container {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    .about-us-content, .contact-info, .contact-form {
+        padding-left: 0;
+        margin-top: 40px;
+    }
+
+    .contact-form {
+        width: 100%;
+    }
+
+    /* Barcha rasm joylashgan divlarni markazga o'tkazish */
+    .about-us-image, .contact-image {
+        text-align: center;
+    }
+
+    .services-section,
+    .commitments-section,
+    .portfolio-section,
+    .contact-section {
+        padding: 50px 20px;
+    }
+
+    .portfolio-caption {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* O'rta ekranlar (planshetlar uchun, 1024px gacha) */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 20px 30px;
+    }
+
+    .hero-section {
+        flex-direction: column-reverse;
+        padding: 50px 30px;
+        text-align: center;
+        height: auto;
+    }
+
+    .hero-content, .hero-image {
+        width: 100%;
+        flex: none;
+    }
+
+    .hero-content {
+        margin-top: 40px;
+    }
+
+    .hero-image img {
+        width: 350px;
+        height: 350px;
+    }
+
+    .about-us-section {
+        flex-direction: column;
+        padding: 50px 30px;
+        text-align: center;
+    }
+
+    .about-us-image {
+        margin-bottom: 30px;
+    }
+
+    .about-us-content {
+        padding-left: 0;
+    }
+
+    .services-section,
+    .commitments-section,
+    .portfolio-section,
+    .contact-section {
+        padding: 50px 30px;
+    }
+
+    .contact-container {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .contact-info, .contact-form {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contact-info .social-links {
+        justify-content: center;
+    }
+}
+/* Scrollbar uslublari */
+/* Faqat WebKit brauzerlari uchun */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+/* Faqat Firefox brauzerlari uchun */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+}
+/* Faqat Internet Explorer va Edge (Legacy) brauzerlari uchun */
+body {
+    -ms-overflow-style: scrollbar;
+}
+/* Faqat Edge (Chromium) brauzerlari uchun WebKit uslublari qo'llaniladi */
+/* End of css/style.css */
